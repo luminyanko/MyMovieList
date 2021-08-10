@@ -1,0 +1,27 @@
+{% extends 'movies/base.html' %}
+{% load static %}
+
+{% block title %}
+    Library | MyMovieList
+{% endblock %}
+
+{% block content %}
+    <div id="content" class="d-flex flex-row justify-content-start">
+        <div id="sort" class="w-25" >
+        </div>
+        <div class="d-flex flex-row justify-content-start flex-wrap">
+            {% for director in directors %}
+                <div class="border border-secondary m-2" align="center">
+                    <div id="director-short-info" class="m-4">
+                        <img src="{{ director.image.url }}" alt="{{ director.name }} image">
+                        <h6 class="text-wrap">
+                            <a href="{% url 'director-detail' director.id %}" class="text-decoration-none link-danger">
+                                {{ director.name }}
+                            </a>
+                        </h6>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
