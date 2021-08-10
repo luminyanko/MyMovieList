@@ -18,7 +18,9 @@
                     <li>Year: {{ movie.year }}</li>
                     <li>Director:
                         {% for director in movie.director.all %}
+                        <a href="{% url 'director-detail' director.id %}" class="text-decoration-none link-danger">
                             {{ director.name }}
+                        </a>
                         {% endfor %}
                     </li>
                     <li>Tags:
