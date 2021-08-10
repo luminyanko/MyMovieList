@@ -1,0 +1,26 @@
+{% extends 'movies/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ director.name}} | MyMovieList
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-row justify-content-end m-2 flex-wrap">
+        <div id="movie-data" class="w-75">
+            <div class="d-flex flex-row">
+                <div id="image">
+                    <img src="{{ director.image.url }}" alt="{{ director.name }} image" >
+                </div>
+                <div>
+                    <ul style="list-style: none" class="">
+                    <li><h3>{{ director.name }}</h3></li>
+                    <li>Age: {{ director.age }}</li>
+                    <li>{{ director.description }}</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

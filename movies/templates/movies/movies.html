@@ -1,0 +1,28 @@
+{% extends 'movies/base.html' %}
+{% load static %}
+
+{% block title %}
+    Library | MyMovieList
+{% endblock %}
+
+{% block content %}
+    <div id="content" class="d-flex flex-row justify-content-start">
+        <div id="sort" class="w-25" >
+        </div>
+        <div class="d-flex flex-row justify-content-start flex-wrap">
+            {% for movie in movies %}
+                <div class="movie border border-secondary m-2" align="center">
+                    <div id="movie-short-info" class="m-4">
+                        <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster">
+                        <h6 class="text-wrap">
+                            <a href="{% url 'movie-detail' movie.id %}" class="text-decoration-none link-danger">
+                                {{ movie.title }}
+                                ({{ movie.year }})
+                            </a>
+                        </h6>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
