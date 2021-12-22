@@ -1,0 +1,29 @@
+{% extends 'movies/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+MovieTracker | Login
+{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <div class="d-flex justify-content-center">
+            <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="mb-2 d-flex justify-content-center">Log In</legend>
+                    {{ form|crispy }}
+            </fieldset>
+            <div class="form-group d-flex justify-content-center">
+                <button class="btn btn-primary mt-2" type="submit">Login</button>
+            </div>
+        </form>
+        </div>
+
+        <div class="pt-3">
+            <small class="text-muted d-flex justify-content-center">
+                Do not have an account?
+                <a class="ml-2" href="{% url 'register' %}">Register</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}
