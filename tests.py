@@ -22,7 +22,7 @@ natural_numbers = natural_numbers_generator()
 @pytest.fixture
 def token():
     url = URL + "api/login/"
-    data = {'username': 'test@mail.com', 'password': 'Password1'}
+    data = {'username': 'test@mail.com', 'password': 'password'}
     resp = requests.post(url, data=data)
     resp_json = json.loads(resp.text)
     return resp_json.get('token')
@@ -30,8 +30,8 @@ def token():
 
 @pytest.mark.run(order=next(natural_numbers))
 def test_registration():
-    url = URL + "api/registration/"
-    data = {'username': 'test@mail.com', 'password': 'Password1'}
+    url = URL + "api/register/"
+    data = {'username': 'test@mail.com', 'password': 'password'}
     resp = requests.post(url, data=data)
     resp_json = json.loads(resp.text)
     assert 'id' in resp_json
@@ -41,8 +41,8 @@ def test_registration():
 
 @pytest.mark.run(order=next(natural_numbers))
 def test_failing_registration():
-    url = URL + "api/registration/"
-    data = {'username': 'a123', 'password': 'pww'}
+    url = URL + "api/register/"
+    data = {'username': 'test@', 'password': '123'}
     resp = requests.post(url, data=data)
     resp_json = json.loads(resp.text)
     assert resp.status_code == 400
